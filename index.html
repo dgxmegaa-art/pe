@@ -15,9 +15,6 @@
         .section-card {
             transition: transform 0.3s ease;
         }
-        .item-row:hover {
-            background-color: #f1f5f9;
-        }
         .number-badge {
             min-width: 2rem;
             height: 2rem;
@@ -31,7 +28,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             flex-shrink: 0;
         }
-        /* تنسيق خاص لقسم الملخص ليكون مثل الورق */
         .paper-content {
             background-image: linear-gradient(#fdfbf7 2rem, #f4f0e6 2rem);
             background-size: 100% 2.1rem;
@@ -48,36 +44,83 @@
             margin-bottom: 10px;
             font-weight: bold;
         }
+        .analysis-card {
+            border-right: 4px solid;
+        }
+        .code-block {
+            direction: ltr;
+            font-family: monospace;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        .nav-link {
+            white-space: nowrap;
+        }
+        /* Quiz Styles */
+        .quiz-option {
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 2px solid #e2e8f0;
+        }
+        .quiz-option:hover:not(.disabled) {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .quiz-option.correct {
+            background-color: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #15803d;
+        }
+        .quiz-option.wrong {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c;
+        }
+        /* تم تعديل هذا الجزء لإصلاح مشكلة عدم ظهور التفسير */
+        .quiz-feedback {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="text-slate-800">
 
     <!-- Header -->
     <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-lg border-b-4 border-yellow-500">
-        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="bg-yellow-600 p-2 rounded-lg">
-                    <i data-lucide="book-open" class="w-8 h-8 text-white"></i>
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3 w-full md:w-auto justify-center md:justify-start">
+                    <div class="bg-yellow-600 p-2 rounded-lg shrink-0">
+                        <i data-lucide="book-open" class="w-6 h-6 md:w-8 md:h-8 text-white"></i>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <h1 class="text-lg md:text-2xl font-bold leading-tight">الموسوعة الشاملة للحاسب الآلي</h1>
+                        <p class="text-slate-400 text-[10px] md:text-sm">ملخصات نظرية + شرح عملي لـ Office + تحليل امتحانات</p>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-xl md:text-2xl font-bold">الموسوعة الشاملة للحاسب الآلي</h1>
-                    <p class="text-slate-400 text-xs md:text-sm">ملخصات نظرية + شرح عملي لـ Office</p>
-                </div>
+                <nav class="flex flex-wrap justify-center gap-2 text-xs md:text-sm font-bold w-full md:w-auto">
+                    <a href="#summary-section" class="nav-link px-3 py-2 rounded-lg bg-yellow-600 hover:bg-yellow-700 transition text-white ring-1 ring-yellow-400 flex items-center gap-1"><i data-lucide="notebook" class="w-4 h-4"></i> الملخص</a>
+                    <a href="#word-insert" class="nav-link px-3 py-2 rounded-lg bg-slate-800 hover:bg-blue-600 transition text-blue-100 flex items-center gap-1"><i data-lucide="file-plus" class="w-4 h-4"></i> Word</a>
+                    <a href="#excel-home" class="nav-link px-3 py-2 rounded-lg bg-slate-800 hover:bg-green-600 transition text-green-100 flex items-center gap-1"><i data-lucide="sheet" class="w-4 h-4"></i> Excel</a>
+                    <a href="#exam-analysis" class="nav-link px-3 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 transition text-white ring-1 ring-purple-400 flex items-center gap-1"><i data-lucide="brain-circuit" class="w-4 h-4"></i> التحليل</a>
+                    <a href="#quiz-section" class="nav-link px-3 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 transition text-white ring-1 ring-teal-400 flex items-center gap-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i> الامتحانات (30 سؤال)</a>
+                </nav>
             </div>
-            <nav class="flex flex-wrap justify-center gap-2 text-sm font-bold">
-                <a href="#summary-section" class="px-3 py-2 rounded-lg bg-yellow-600 hover:bg-yellow-700 transition text-white ring-2 ring-yellow-400">الملخص الشامل</a>
-                <a href="#word-insert" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-blue-600 transition text-blue-100">Insert (Word)</a>
-                <a href="#excel-home" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-green-600 transition text-green-100">Excel Home</a>
-                <a href="#word-layout" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-blue-600 transition text-blue-100">Page Layout (Word)</a>
-                <a href="#exams-section" class="px-3 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition text-white ring-2 ring-red-400">الامتحانات (PDF)</a>
-            </nav>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8 space-y-16">
 
         <!-- ========================================== -->
-        <!--  SUMMARY SECTION (قسم الملخص)              -->
+        <!--  SUMMARY SECTION (كامل كما كان)              -->
         <!-- ========================================== -->
         <section id="summary-section" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
             <div class="bg-yellow-500 px-6 py-4 flex items-center justify-between text-white">
@@ -390,111 +433,38 @@
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!--  END OF SUMMARY SECTION                    -->
-        <!-- ========================================== -->
-
         <!-- 1. Word Insert Section -->
         <section id="word-insert" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
             <div class="bg-blue-600 px-6 py-4 flex items-center justify-between text-white">
-                <h2 class="text-2xl font-bold flex items-center gap-2">
-                    <i data-lucide="file-plus" class="w-6 h-6"></i>
-                    1. Word
-                </h2>
+                <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="file-plus" class="w-6 h-6"></i> 1. تبويب "إدراج" (Insert) - Word</h2>
                 <span class="bg-white/20 px-3 py-1 rounded-full text-sm">19 أداة</span>
             </div>
-            
             <div class="p-6">
-                <p class="text-lg text-slate-600 mb-6 bg-blue-50 p-4 rounded-xl border-r-4 border-blue-500">
-                    هذه القائمة خاصة بإضافة عناصر مختلفة إلى المستند.
-                </p>
-
                 <div class="flex flex-col gap-8">
-                    <!-- Image Place -->
                     <div class="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center w-full max-w-4xl mx-auto overflow-hidden relative group">
-                        <img src="./word_insert.jpg" alt="Insert Tab Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105"
-                             onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>word_insert.jpg</p></div>'">
+                        <img src="./word_insert.jpg" alt="Insert Tab Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105" onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>word_insert.jpg</p></div>'">
                     </div>
-
-                    <!-- List -->
                     <div class="overflow-y-visible">
                         <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">1</span>
-                                <div><strong class="text-blue-900 block mb-1">Cover Page (صفحة غلاف):</strong> لإدراج غلاف جاهز ومنسق للمستند في البداية.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">2</span>
-                                <div><strong class="text-blue-900 block mb-1">Blank Page (صفحة فارغة):</strong> لإدراج صفحة بيضاء جديدة فوراً.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">3</span>
-                                <div><strong class="text-blue-900 block mb-1">Page Break (فاصل صفحات):</strong> لإنهاء الصفحة الحالية والبدء في صفحة جديدة فوراً.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">4</span>
-                                <div><strong class="text-blue-900 block mb-1">Table (جدول):</strong> لإنشاء وإدراج جداول لتنظيم البيانات.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">5</span>
-                                <div><strong class="text-blue-900 block mb-1">Picture (صورة):</strong> لإدراج صورة محفوظة على جهاز الكمبيوتر الخاص بك.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">6</span>
-                                <div><strong class="text-blue-900 block mb-1">Clip Art (قصاصة فنية):</strong> لإدراج رسومات توضيحية بسيطة (موجودة في النسخ القديمة من أوفيس).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">7</span>
-                                <div><strong class="text-blue-900 block mb-1">Shapes (أشكال):</strong> لرسم أشكال هندسية (مربعات، دوائر، أسهم، خطوط).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">8</span>
-                                <div><strong class="text-blue-900 block mb-1">SmartArt:</strong> لإدراج رسومات بيانية وهيكلية لتوضيح المعلومات بصرياً.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">9</span>
-                                <div><strong class="text-blue-900 block mb-1">Chart (مخطط):</strong> لإنشاء رسوم بيانية (أعمدة، دوائر نسبية) لتمثيل البيانات رقمياً.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">10</span>
-                                <div><strong class="text-blue-900 block mb-1">Screenshot (لقطة شاشة):</strong> لأخذ صورة لأي نافذة مفتوحة حالياً على الجهاز وإدراجها.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">11</span>
-                                <div><strong class="text-blue-900 block mb-1">Hyperlink (ارتباط تشعبي):</strong> لربط نص أو صورة برابط موقع إلكتروني أو بملف آخر.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">12</span>
-                                <div><strong class="text-blue-900 block mb-1">Header (رأس الصفحة):</strong> للكتابة في الهامش العلوي للصفحة (يتكرر في كل الصفحات).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">13</span>
-                                <div><strong class="text-blue-900 block mb-1">Footer (تذييل الصفحة):</strong> للكتابة في الهامش السفلي للصفحة.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">14</span>
-                                <div><strong class="text-blue-900 block mb-1">Page Number (رقم الصفحة):</strong> لإدراج ترقيم تلقائي لصفحات المستند.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">15</span>
-                                <div><strong class="text-blue-900 block mb-1">Text Box (مربع نص):</strong> لإدراج صندوق يمكن الكتابة بداخله وتحريكه بحرية في الصفحة.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">16</span>
-                                <div><strong class="text-blue-900 block mb-1">WordArt:</strong> للكتابة بخطوط زخرفية وتأثيرات فنية وتلوين مميز.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">17</span>
-                                <div><strong class="text-blue-900 block mb-1">Date & Time (التاريخ والوقت):</strong> لإدراج التاريخ والوقت الحاليين بنقرة واحدة.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">18</span>
-                                <div><strong class="text-blue-900 block mb-1">Equation (معادلة):</strong> لإدراج رموز ومعادلات رياضية معقدة.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
-                                <span class="number-badge bg-blue-500">19</span>
-                                <div><strong class="text-blue-900 block mb-1">Symbol (رمز):</strong> لإدراج رموز خاصة غير موجودة في لوحة المفاتيح (مثل ©، ™، £).</div>
-                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">1</span><div><strong class="text-blue-900 block mb-1">Cover Page (صفحة غلاف):</strong> لإدراج غلاف جاهز ومنسق للمستند في البداية.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">2</span><div><strong class="text-blue-900 block mb-1">Blank Page (صفحة فارغة):</strong> لإدراج صفحة بيضاء جديدة فوراً.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">3</span><div><strong class="text-blue-900 block mb-1">Page Break (فاصل صفحات):</strong> لإنهاء الصفحة الحالية والبدء في صفحة جديدة فوراً.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">4</span><div><strong class="text-blue-900 block mb-1">Table (جدول):</strong> لإنشاء وإدراج جداول لتنظيم البيانات.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">5</span><div><strong class="text-blue-900 block mb-1">Picture (صورة):</strong> لإدراج صورة محفوظة على جهاز الكمبيوتر الخاص بك.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">6</span><div><strong class="text-blue-900 block mb-1">Clip Art (قصاصة فنية):</strong> لإدراج رسومات توضيحية بسيطة (موجودة في النسخ القديمة من أوفيس).</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">7</span><div><strong class="text-blue-900 block mb-1">Shapes (أشكال):</strong> لرسم أشكال هندسية (مربعات، دوائر، أسهم، خطوط).</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">8</span><div><strong class="text-blue-900 block mb-1">SmartArt:</strong> لإدراج رسومات بيانية وهيكلية لتوضيح المعلومات بصرياً.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">9</span><div><strong class="text-blue-900 block mb-1">Chart (مخطط):</strong> لإنشاء رسوم بيانية (أعمدة، دوائر نسبية) لتمثيل البيانات رقمياً.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">10</span><div><strong class="text-blue-900 block mb-1">Screenshot (لقطة شاشة):</strong> لأخذ صورة لأي نافذة مفتوحة حالياً على الجهاز وإدراجها.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">11</span><div><strong class="text-blue-900 block mb-1">Hyperlink (ارتباط تشعبي):</strong> لربط نص أو صورة برابط موقع إلكتروني أو بملف آخر.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">12</span><div><strong class="text-blue-900 block mb-1">Header (رأس الصفحة):</strong> للكتابة في الهامش العلوي للصفحة (يتكرر في كل الصفحات).</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">13</span><div><strong class="text-blue-900 block mb-1">Footer (تذييل الصفحة):</strong> للكتابة في الهامش السفلي للصفحة.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">14</span><div><strong class="text-blue-900 block mb-1">Page Number (رقم الصفحة):</strong> لإدراج ترقيم تلقائي لصفحات المستند.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">15</span><div><strong class="text-blue-900 block mb-1">Text Box (مربع نص):</strong> لإدراج صندوق يمكن الكتابة بداخله وتحريكه بحرية في الصفحة.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">16</span><div><strong class="text-blue-900 block mb-1">WordArt:</strong> للكتابة بخطوط زخرفية وتأثيرات فنية وتلوين مميز.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">17</span><div><strong class="text-blue-900 block mb-1">Date & Time (التاريخ والوقت):</strong> لإدراج التاريخ والوقت الحاليين بنقرة واحدة.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">18</span><div><strong class="text-blue-900 block mb-1">Equation (معادلة):</strong> لإدراج رموز ومعادلات رياضية معقدة.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full"><span class="number-badge bg-blue-500">19</span><div><strong class="text-blue-900 block mb-1">Symbol (رمز):</strong> لإدراج رموز خاصة غير موجودة في لوحة المفاتيح (مثل ©، ™، £).</div></li>
                         </ul>
                     </div>
                 </div>
@@ -504,51 +474,20 @@
         <!-- 2. Excel Home Section -->
         <section id="excel-home" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
             <div class="bg-green-600 px-6 py-4 flex items-center justify-between text-white">
-                <h2 class="text-2xl font-bold flex items-center gap-2">
-                    <i data-lucide="sheet" class="w-6 h-6"></i>
-                    2. واجهة Excel (الشريط الرئيسي)
-                </h2>
+                <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="sheet" class="w-6 h-6"></i> 2. واجهة Excel (الشريط الرئيسي)</h2>
                 <span class="bg-white/20 px-3 py-1 rounded-full text-sm">4 أدوات رئيسية</span>
             </div>
-            
             <div class="p-6">
-                <p class="text-lg text-slate-600 mb-6 bg-green-50 p-4 rounded-xl border-r-4 border-green-500">
-                    توضح هذه الواجهة بعض الأدوات الأساسية في التعامل مع الخلايا.
-                </p>
-
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Image Place -->
                     <div class="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center min-h-[300px] relative group overflow-hidden">
-                         <img src="./excel_home.jpg" alt="Excel Home Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105"
-                             onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>excel_home.jpg</p></div>'">
+                         <img src="./excel_home.jpg" alt="Excel Home Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105" onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>excel_home.jpg</p></div>'">
                     </div>
-
-                    <!-- List -->
                     <div class="flex flex-col justify-center">
                         <ul class="space-y-4">
-                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
-                                <span class="number-badge bg-green-600">1</span>
-                                <div><strong class="text-green-800">Name Box (مربع الاسم):</strong> يظهر فيه اسم الخلية النشطة التي تقف عليها حالياً (مثلاً A1).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
-                                <span class="number-badge bg-green-600">2</span>
-                                <div><strong class="text-green-800">Formula Bar (شريط الصيغة):</strong> يظهر فيه محتوى الخلية الحقيقي، سواء كان نصاً أو معادلة رياضية.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
-                                <span class="number-badge bg-green-600">3</span>
-                                <div><strong class="text-green-800">Delete (حذف):</strong> خيار لحذف الخلايا، الصفوف، أو الأعمدة المحددة.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
-                                <span class="number-badge bg-green-600">4</span>
-                                <div class="w-full">
-                                    <strong class="text-green-800">AutoSum Functions (دوال الجمع التلقائي):</strong> قائمة منسدلة تحتوي على دوال حسابية سريعة مثل:
-                                    <ul class="list-disc list-inside mt-2 text-sm text-green-700">
-                                        <li>Sum (المجموع).</li>
-                                        <li>Average (المتوسط).</li>
-                                        <li>Max/Min (أكبر/أصغر قيمة).</li>
-                                    </ul>
-                                </div>
-                            </li>
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white"><span class="number-badge bg-green-600">1</span><div><strong class="text-green-800">Name Box (مربع الاسم):</strong> يظهر فيه اسم الخلية النشطة التي تقف عليها حالياً (مثلاً A1).</div></li>
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white"><span class="number-badge bg-green-600">2</span><div><strong class="text-green-800">Formula Bar (شريط الصيغة):</strong> يظهر فيه محتوى الخلية الحقيقي، سواء كان نصاً أو معادلة رياضية.</div></li>
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white"><span class="number-badge bg-green-600">3</span><div><strong class="text-green-800">Delete (حذف):</strong> خيار لحذف الخلايا، الصفوف، أو الأعمدة المحددة.</div></li>
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white"><span class="number-badge bg-green-600">4</span><div class="w-full"><strong class="text-green-800">AutoSum Functions (دوال الجمع التلقائي):</strong> قائمة منسدلة تحتوي على دوال حسابية سريعة مثل:<ul class="list-disc list-inside mt-2 text-sm text-green-700"><li>Sum (المجموع).</li><li>Average (المتوسط).</li><li>Max/Min (أكبر/أصغر قيمة).</li></ul></div></li>
                         </ul>
                     </div>
                 </div>
@@ -558,60 +497,24 @@
         <!-- 3. Word Layout Section -->
         <section id="word-layout" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
             <div class="bg-indigo-600 px-6 py-4 flex items-center justify-between text-white">
-                <h2 class="text-2xl font-bold flex items-center gap-2">
-                    <i data-lucide="layout-template" class="w-6 h-6"></i>
-                    3. تبويب "تخطيط الصفحة" (Page Layout)
-                </h2>
+                <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="layout-template" class="w-6 h-6"></i> 3. تبويب "تخطيط الصفحة" (Page Layout)</h2>
                 <span class="bg-white/20 px-3 py-1 rounded-full text-sm">8 أدوات</span>
             </div>
-            
             <div class="p-6">
-                <p class="text-lg text-slate-600 mb-6 bg-indigo-50 p-4 rounded-xl border-r-4 border-indigo-500">
-                    هذه القائمة خاصة بضبط شكل وتنسيق صفحات المستند.
-                </p>
-
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Image Place -->
                     <div class="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center min-h-[400px] relative group overflow-hidden">
-                        <img src="./word_layout.jpg" alt="Page Layout Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105"
-                             onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>word_layout.jpg</p></div>'">
+                        <img src="./word_layout.jpg" alt="Page Layout Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105" onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>word_layout.jpg</p></div>'">
                     </div>
-
-                    <!-- List -->
                     <div class="flex flex-col justify-center">
                         <ul class="space-y-3">
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">1</span>
-                                <div><strong class="text-indigo-900">Themes (النسق):</strong> تغيير تصميم المستند بالكامل (الألوان، الخطوط، التأثيرات) بضغطة واحدة ليكون متناسقاً.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">2</span>
-                                <div><strong class="text-indigo-900">Margins (الهوامش):</strong> التحكم في المساحة البيضاء الفارغة حول النص من الجهات الأربع (يمين، يسار، أعلى، أسفل).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">3</span>
-                                <div><strong class="text-indigo-900">Orientation (الاتجاه):</strong> تغيير وضع الصفحة إما "عمودي" (Portrait) أو "أفقي" (Landscape).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">4</span>
-                                <div><strong class="text-indigo-900">Size (الحجم):</strong> اختيار حجم الورقة المستخدمة (مثل A4, Letter).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">5</span>
-                                <div><strong class="text-indigo-900">Line Numbers (أرقام الأسطر):</strong> وضع رقم بجوار كل سطر في المستند (مفيد للمستندات القانونية أو البرمجية).</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">6</span>
-                                <div><strong class="text-indigo-900">Watermark (علامة مائية):</strong> وضع نص أو صورة باهتة في الخلفية (مثل كلمة "مسودة" أو "سري").</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">7</span>
-                                <div><strong class="text-indigo-900">Page Color (لون الصفحة):</strong> تغيير لون خلفية الورقة بالكامل.</div>
-                            </li>
-                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
-                                <span class="number-badge bg-indigo-500">8</span>
-                                <div><strong class="text-indigo-900">Spacing (التباعد):</strong> التحكم في المسافة الفارغة قبل الفقرة (Before) أو بعد الفقرة (After).</div>
-                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">1</span><div><strong class="text-indigo-900">Themes (النسق):</strong> تغيير تصميم المستند بالكامل (الألوان، الخطوط).</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">2</span><div><strong class="text-indigo-900">Margins (الهوامش):</strong> التحكم في المساحة البيضاء الفارغة حول النص.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">3</span><div><strong class="text-indigo-900">Orientation (الاتجاه):</strong> تغيير وضع الصفحة إما "عمودي" أو "أفقي".</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">4</span><div><strong class="text-indigo-900">Size (الحجم):</strong> اختيار حجم الورقة المستخدمة (مثل A4).</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">5</span><div><strong class="text-indigo-900">Line Numbers (أرقام الأسطر):</strong> وضع رقم بجوار كل سطر.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">6</span><div><strong class="text-indigo-900">Watermark (علامة مائية):</strong> وضع نص أو صورة باهتة في الخلفية.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">7</span><div><strong class="text-indigo-900">Page Color (لون الصفحة):</strong> تغيير لون خلفية الورقة بالكامل.</div></li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100"><span class="number-badge bg-indigo-500">8</span><div><strong class="text-indigo-900">Spacing (التباعد):</strong> التحكم في المسافة الفارغة قبل وبعد الفقرة.</div></li>
                         </ul>
                     </div>
                 </div>
@@ -621,32 +524,99 @@
         <!-- 4. Exams Section -->
         <section id="exams-section" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
             <div class="bg-red-600 px-6 py-4 flex items-center justify-between text-white">
-                <h2 class="text-2xl font-bold flex items-center gap-2">
-                    <i data-lucide="file-text" class="w-6 h-6"></i>
-                    4. الامتحانات (ملف PDF)
-                </h2>
+                <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="file-text" class="w-6 h-6"></i> 4. الامتحانات (ملف PDF)</h2>
                 <span class="bg-white/20 px-3 py-1 rounded-full text-sm">عرض مباشر</span>
             </div>
-            
             <div class="p-6">
-                <p class="text-lg text-slate-600 mb-6 bg-red-50 p-4 rounded-xl border-r-4 border-red-500">
-                     <strong>exam.pdf</strong> في نفس المجلد.
-                </p>
-
-                <div class="w-full h-[800px] bg-slate-100 rounded-xl border-2 border-slate-300 overflow-hidden relative">
-                    <!-- PDF Viewer Object -->
-                    <object data="./exam.pdf" type="application/pdf" width="100%" height="100%">
-                        <div class="flex flex-col items-center justify-center h-full text-slate-500 p-8 text-center">
-                            <i data-lucide="file-x" class="w-16 h-16 mb-4 text-red-400"></i>
-                            <p class="text-xl font-bold mb-2">لم يتم العثور على ملف PDF</p>
-                            <p class="text-sm mb-4">يرجى وضع ملف باسم <code class="bg-slate-200 px-2 py-1 rounded text-red-600 font-mono">exam.pdf</code> بجانب ملف الموقع.</p>
-                            <a href="./exam.pdf" download class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition flex items-center gap-2">
-                                <i data-lucide="download" class="w-4 h-4"></i>
-                                تحميل الملف
-                            </a>
-                        </div>
-                    </object>
+                <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-xl mb-6 text-sm flex items-start gap-3"><i data-lucide="alert-circle" class="w-5 h-5 shrink-0 mt-0.5"></i><p><strong>ملاحظة لمستخدمي الهاتف:</strong> قد لا يظهر ملف PDF مباشرة داخل الصفحة على بعض الهواتف. يمكنك استخدام <strong>زر التحميل</strong> في الأسفل.</p></div>
+                <div class="flex flex-col lg:flex-row gap-4 h-[800px]">
+                    <div class="w-full lg:w-3/4 bg-slate-100 rounded-xl border-2 border-slate-300 overflow-hidden relative h-full">
+                        <object data="./exam.pdf" type="application/pdf" width="100%" height="100%">
+                            <div class="flex flex-col items-center justify-center h-full text-slate-500 p-8 text-center bg-white"><i data-lucide="file-x" class="w-16 h-16 mb-4 text-red-400"></i><p class="text-xl font-bold mb-2">تعذر عرض الملف مباشرة</p><a href="./exam.pdf" download class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition flex items-center gap-2 shadow-lg"><i data-lucide="download" class="w-5 h-5"></i> اضغط هنا لتحميل الملف</a></div>
+                        </object>
+                    </div>
+                    <div class="w-full lg:w-1/4 flex flex-col gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><h3 class="font-bold text-slate-800 mb-2">خيارات بديلة:</h3><a href="./exam.pdf" download class="block w-full py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-center mb-2 shadow font-bold">تحميل الملف (Download)</a></div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 5. Exam Analysis Section (Detailed) -->
+        <section id="exam-analysis" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-purple-700 px-6 py-4 flex items-center justify-between text-white">
+                <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="brain-circuit" class="w-6 h-6"></i> 5. تحليل وشرح أسئلة الامتحانات</h2>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm">القواعد الذهبية للحل</span>
+            </div>
+
+            <div class="p-8 space-y-12">
+                
+                <!-- Topic 1: Excel Formula Rules -->
+                <div class="analysis-card border-purple-500 pl-6">
+                    <h3 class="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2"><span class="bg-purple-100 p-1 rounded"><i data-lucide="calculator" class="w-5 h-5"></i></span> أولاً: قواعد حل معادلات الإكسل</h3>
+                    <div class="space-y-6">
+                        <!-- COUNTIF -->
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 mb-3 border-b pb-2">1. الدالة الشرطية COUNTIF (العد بشرط)</h4>
+                            <p class="text-sm text-slate-600 mb-2">السؤال: اختر المعادلة الصحيحة لعد القيم الأكبر من صفر.</p>
+                            <ul class="list-disc list-inside text-sm text-slate-700 space-y-2">
+                                <li>الصيغة العامة: <code>=COUNTIF(Range, Criteria)</code></li>
+                                <li><strong>الخدعة في الامتحان:</strong> انتبه لعلامات التنصيص حول الشرط <code>">0"</code> والفاصلة.</li>
+                            </ul>
+                            <div class="mt-2 p-2 bg-green-100 rounded text-green-800 font-mono text-sm border border-green-300">
+                                ✅ الصحيح: =COUNTIF($B$2:$B$21, ">0")
+                            </div>
+                        </div>
+
+                        <!-- LARGE & SMALL & COUNTBLANK (ADDED) -->
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 mb-3 border-b pb-2">2. دوال الترتيب والفراغ (LARGE, SMALL, COUNTBLANK)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                                <div class="bg-white p-3 rounded border border-blue-200">
+                                    <strong class="text-blue-700 block mb-1">LARGE (أكبر قيمة بترتيب)</strong>
+                                    <p class="text-xs text-slate-600">لإيجاد "رابع" أكبر قيمة.<br><code>=LARGE(Range, 4)</code></p>
+                                </div>
+                                <div class="bg-white p-3 rounded border border-red-200">
+                                    <strong class="text-red-700 block mb-1">SMALL (أصغر قيمة بترتيب)</strong>
+                                    <p class="text-xs text-slate-600">لإيجاد "ثالث" أصغر قيمة.<br><code>=SMALL(Range, 3)</code></p>
+                                </div>
+                                <div class="bg-white p-3 rounded border border-gray-200">
+                                    <strong class="text-gray-700 block mb-1">COUNTBLANK (الفراغ)</strong>
+                                    <p class="text-xs text-slate-600">لعد الخلايا الفارغة تماماً.<br><code>=COUNTBLANK(Range)</code></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nested IF -->
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 mb-3 border-b pb-2">3. حل معادلة IF المتداخلة (التقديرات) بالنظر</h4>
+                            <p class="text-sm text-slate-600 mb-2">المعادلة: <code>=IF(B2>=90,"A+",IF(B2>=80,"B+",IF(B2>=50,"C+","F")))</code></p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white p-3 rounded border border-purple-200">
+                                    <strong class="text-purple-700 block text-sm">إذا الدرجة 52:</strong>
+                                    <p class="text-xs text-slate-600">هل هي >=90؟ لا. هل هي >=80؟ لا. هل هي >=50؟ نعم. <br><strong>النتيجة: C+</strong></p>
+                                </div>
+                                <div class="bg-white p-3 rounded border border-purple-200">
+                                    <strong class="text-purple-700 block text-sm">إذا الدرجة 90:</strong>
+                                    <p class="text-xs text-slate-600">هل هي >=90؟ نعم. (توقف فوراً). <br><strong>النتيجة: A+</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6. Interactive Quiz Section (Fixed Feedback) -->
+        <section id="quiz-section" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-teal-600 px-6 py-4 flex items-center justify-between text-white">
+                <h2 class="text-2xl font-bold flex items-center gap-2"><i data-lucide="clipboard-check" class="w-6 h-6"></i> 6. بنك الأسئلة التفاعلي (30 سؤال)</h2>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm" id="score-display">النتيجة: 0 / 30</span>
+            </div>
+            
+            <div class="p-8" id="quiz-container">
+                <!-- Quiz items will be injected here by JS -->
             </div>
         </section>
 
@@ -658,6 +628,276 @@
 
     <script>
         lucide.createIcons();
+
+        // 30 Questions Data Base
+        const questions = [
+            {
+                q: "103- أي من المعادلات التالية تمثل دالة countif بالشكل الصحيح؟",
+                options: [
+                    "a) =COUNTIF($B$2:$B$21,>0)",
+                    "b) =COUNTIF($B$2:$B$21, \">0\")",
+                    "c) COUNTIF($B$2:$B$21, \">0\")",
+                    "d) =COUNTIF($B$2 $B$21, \">0\")"
+                ],
+                correct: 1,
+                explanation: "الصيغة الصحيحة تتطلب علامة = في البداية، ووضع الشرط \">0\" بين علامات تنصيص."
+            },
+            {
+                q: "104- أي من المعادلات التالية تمثل دالة Large (لإيجاد رابع أكبر قيمة)؟",
+                options: [
+                    "a) =LARG($B$2:$B$20,4)",
+                    "b) LARGE($B$2:$B$20,4)",
+                    "c) =LARGE($B$2:$B$20, 4)",
+                    "d) =LARGE$B$2:$B$20,4)"
+                ],
+                correct: 2,
+                explanation: "الخيار c هو الوحيد المكتوب إملائياً بشكل صحيح مع علامة = والأقواس."
+            },
+            {
+                q: "107- في معادلة IF، الطالب الحاصل على 52 درجة يحصل على تقدير:",
+                options: ["A+", "B+", "C+", "F"],
+                correct: 2,
+                explanation: "لأن 52 ليست أكبر من 90 ولا 80، لكنها أكبر من 50 (الشرط الثالث)."
+            },
+            {
+                q: "108- في معادلة IF، الطالب الحاصل على 90 درجة يحصل على تقدير:",
+                options: ["A+", "B+", "C+", "F"],
+                correct: 0,
+                explanation: "لأن 90 تحقق الشرط الأول (أكبر من أو يساوي 90) فوراً."
+            },
+            {
+                q: "90- يستخدم شريط الصيغة (Formula Bar) في الإكسيل في:",
+                options: ["فتح ملف جديد", "كتابة المعادلات والدوال", "تحديد المستند", "إغلاق البرنامج"],
+                correct: 1,
+                explanation: "شريط الصيغة هو المكان المخصص لإظهار وتحرير محتوى الخلية الفعلي والمعادلات."
+            },
+            {
+                q: "91- عند الضغط على Wrap text (التفاف النص) في الإكسيل يمكن الكتابة في الخلية:",
+                options: ["سطر واحد فقط", "كلمة واحدة", "أكثر من سطر", "لا شيء مما سبق"],
+                correct: 2,
+                explanation: "التفاف النص يسمح للنص بالنزول لسطر جديد داخل نفس الخلية."
+            },
+            {
+                q: "92- عند الضغط على أيقونة WordArt يمكن إدراج:",
+                options: ["جدول بيانات", "خطوط ملونة زاهية", "صفحة فارغة", "صورة"],
+                correct: 1,
+                explanation: "WordArt هي أداة للنصوص الزخرفية والفنية."
+            },
+            {
+                q: "ذاكرة القراءة فقط ROM هي ذاكرة ثابتة يمكن الكتابة عليها.",
+                options: ["صح", "خطأ"],
+                correct: 1,
+                explanation: "خطأ. ROM هي للقراءة فقط (Read Only) ولا يمكن للمستخدم الكتابة عليها."
+            },
+            {
+                q: "لإدراج ترقيم الصفحات في وورد نستخدم قائمة:",
+                options: ["Home", "View", "Insert", "Layout"],
+                correct: 2,
+                explanation: "أرقام الصفحات (Page Number) تدرج من قائمة Insert."
+            },
+            {
+                q: "يعتبر القرص الصلب (Hard Disk) من وحدات:",
+                options: ["الإدخال", "الإخراج", "المعالجة", "التخزين"],
+                correct: 3,
+                explanation: "القرص الصلب هو وحدة تخزين رئيسية ودائمة."
+            },
+            {
+                q: "الشبكات هي مجموعة من أجهزة الحاسب المتصلة معاً.",
+                options: ["صح", "خطأ"],
+                correct: 0,
+                explanation: "صح. هذا هو التعريف الأساسي للشبكة."
+            },
+            {
+                q: "لإدراج معادلة رياضية في إكسيل نضغط على قائمة Home.",
+                options: ["صح", "خطأ"],
+                correct: 1,
+                explanation: "خطأ. المعادلات تدرج من قائمة Insert (إدراج)."
+            },
+            {
+                q: "الاختصار Ctrl + A يستخدم لـ:",
+                options: ["النسخ", "القص", "اللصق", "تحديد الكل"],
+                correct: 3,
+                explanation: "A تعني All (الكل)."
+            },
+            {
+                q: "الذاكرة العشوائية RAM تفقد بياناتها عند انقطاع الكهرباء.",
+                options: ["صح", "خطأ"],
+                correct: 0,
+                explanation: "صح. لأنها ذاكرة متطايرة (Volatile)."
+            },
+            {
+                q: "أي من التالي يعتبر نظام تشغيل؟",
+                options: ["Excel", "Word", "Windows 10", "PowerPoint"],
+                correct: 2,
+                explanation: "ويندوز هو نظام التشغيل الذي يدير الجهاز، الباقي برامج تطبيقية."
+            },
+            {
+                q: "الجيجابايت (GB) تساوي:",
+                options: ["1024 KB", "1024 Byte", "1024 MB", "1000 KB"],
+                correct: 2,
+                explanation: "الجيجا = 1024 ميجا."
+            },
+            {
+                q: "الأمر Cut والأمر Copy يقومان بنفس الوظيفة.",
+                options: ["صح", "خطأ"],
+                correct: 1,
+                explanation: "خطأ. Cut ينقل (يقص)، بينما Copy ينسخ ويترك الأصل."
+            },
+            {
+                q: "يمكن تغيير اتجاه الصفحة (Orientation) من قائمة:",
+                options: ["Insert", "Home", "Page Layout", "View"],
+                correct: 2,
+                explanation: "إعدادات الصفحة (هوامش، اتجاه، حجم) في Page Layout."
+            },
+            {
+                q: "يعتبر الماسح الضوئي (Scanner) من وحدات:",
+                options: ["الإخراج", "الإدخال", "التخزين", "المعالجة"],
+                correct: 1,
+                explanation: "لأنه يدخل الصور للمحاسب."
+            },
+            {
+                q: "في Outlook، المجلد الذي يحتوي على الرسائل التي كتبتها ولم ترسلها:",
+                options: ["Inbox", "Sent Items", "Drafts", "Deleted Items"],
+                correct: 2,
+                explanation: "Drafts (المسودات) تحفظ الرسائل غير المرسلة."
+            },
+            {
+                q: "لعمل جمع تلقائي في إكسيل نضغط على أيقونة:",
+                options: ["AutoSum", "Sort", "Filter", "Find"],
+                correct: 0,
+                explanation: "AutoSum هي أداة الجمع السريع."
+            },
+            {
+                q: "يمكن إدراج فيديو في بوربوينت من قائمة Insert.",
+                options: ["صح", "خطأ"],
+                correct: 0,
+                explanation: "صح. الوسائط (فيديو وصوت) تضاف من إدراج."
+            },
+            {
+                q: "الاختصار Ctrl + X يستخدم لـ:",
+                options: ["النسخ", "القص", "اللصق", "الحفظ"],
+                correct: 1,
+                explanation: "X يشبه المقص، لذا فهو للقص (Cut)."
+            },
+            {
+                q: "أي مما يلي يعتبر جهاز إدخال وإخراج معاً؟",
+                options: ["الماوس", "السماعة", "شاشة اللمس", "الطابعة"],
+                correct: 2,
+                explanation: "شاشة اللمس تعرض (إخراج) وتستقبل اللمس (إدخال)."
+            },
+            {
+                q: "البيانات المخزنة على CD-ROM تعتبر:",
+                options: ["مؤقتة", "للقراءة والكتابة", "دائمة وللقراءة فقط", "متطايرة"],
+                correct: 2,
+                explanation: "بمجرد النسخ تصبح للقراءة فقط ودائمة."
+            },
+            {
+                q: "تستخدم وحدة المعالجة المركزية CPU في:",
+                options: ["التخزين", "العمليات الحسابية", "الإدخال", "الإخراج"],
+                correct: 1,
+                explanation: "المعالج هو عقل الجهاز للحساب والمنطق."
+            },
+            {
+                q: "لحذف صف في إكسيل، نضغط Delete من قائمة:",
+                options: ["Insert", "View", "Home", "Data"],
+                correct: 2,
+                explanation: "أوامر الخلايا (حذف/إدراج) موجودة في تبويب Home."
+            },
+            {
+                q: "لعمل رسم بياني (Chart) في إكسيل نذهب لقائمة:",
+                options: ["Home", "Insert", "Page Layout", "Data"],
+                correct: 1,
+                explanation: "الرسوم البيانية تدرج من قائمة Insert."
+            },
+            {
+                q: "عدد البتات (Bits) في البايت الواحد (Byte) هو:",
+                options: ["10", "16", "8", "4"],
+                correct: 2,
+                explanation: "1 Byte = 8 Bits."
+            },
+            {
+                q: "في وورد، الخط الأحمر المتعرج تحت الكلمة يعني:",
+                options: ["خطأ نحوي", "خطأ إملائي", "تنسيق خاطئ", "كلمة صحيحة"],
+                correct: 1,
+                explanation: "الأحمر للإملائي (Spelling)، والأزرق للنحوي (Grammar)."
+            }
+        ];
+
+        // Initialize Quiz
+        const container = document.getElementById('quiz-container');
+        let quizHTML = '';
+
+        questions.forEach((item, index) => {
+            let optionsHTML = '';
+            item.options.forEach((opt, optIndex) => {
+                optionsHTML += `
+                    <div class="quiz-option bg-white p-3 rounded-lg mb-2" 
+                         onclick="checkAnswer(${index}, ${optIndex}, this)">
+                        ${opt}
+                    </div>
+                `;
+            });
+
+            quizHTML += `
+                <div class="mb-8 border-b border-slate-200 pb-6 last:border-0" id="q-${index}">
+                    <h3 class="font-bold text-lg text-slate-800 mb-3 flex gap-2">
+                        <span class="bg-slate-800 text-white w-6 h-6 rounded flex items-center justify-center text-sm shrink-0">${index + 1}</span>
+                        ${item.q}
+                    </h3>
+                    <div class="options-container">
+                        ${optionsHTML}
+                    </div>
+                    <div class="quiz-feedback mt-3 p-3 rounded-lg text-sm font-bold bg-slate-100 text-slate-700 hidden">
+                        <div class="explanation-text"></div>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = quizHTML;
+
+        // Quiz Logic
+        let score = 0;
+        let answeredCount = 0;
+
+        window.checkAnswer = function(qIndex, optIndex, element) {
+            // Prevent changing answer
+            if (element.parentElement.classList.contains('answered')) return;
+            
+            const question = questions[qIndex];
+            const feedbackDiv = document.querySelector(`#q-${qIndex} .quiz-feedback`);
+            const explanationText = feedbackDiv.querySelector('.explanation-text');
+            const allOptions = element.parentElement.children;
+
+            element.parentElement.classList.add('answered'); // Lock options
+
+            // Style all options to show disabled state
+            for(let opt of allOptions) {
+                opt.classList.add('disabled', 'cursor-default');
+            }
+
+            if (optIndex === question.correct) {
+                // Correct Answer
+                element.classList.add('correct');
+                feedbackDiv.classList.remove('hidden');
+                feedbackDiv.classList.add('bg-green-50', 'text-green-800', 'border', 'border-green-200');
+                explanationText.innerHTML = `✅ إجابة صحيحة! <br> ${question.explanation}`;
+                score++;
+            } else {
+                // Wrong Answer
+                element.classList.add('wrong');
+                // Highlight correct answer
+                allOptions[question.correct].classList.add('correct');
+                
+                feedbackDiv.classList.remove('hidden');
+                feedbackDiv.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
+                explanationText.innerHTML = `❌ إجابة خاطئة. الإجابة الصحيحة هي: (${question.options[question.correct]}) <br> التفسير: ${question.explanation}`;
+            }
+
+            answeredCount++;
+            document.getElementById('score-display').innerText = `النتيجة: ${score} / ${questions.length}`;
+        };
+
     </script>
 </body>
 </html>
