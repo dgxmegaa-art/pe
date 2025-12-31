@@ -1,1 +1,663 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح واجهات برامج Microsoft Office وملخص الحاسب</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        .section-card {
+            transition: transform 0.3s ease;
+        }
+        .item-row:hover {
+            background-color: #f1f5f9;
+        }
+        .number-badge {
+            min-width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        /* تنسيق خاص لقسم الملخص ليكون مثل الورق */
+        .paper-content {
+            background-image: linear-gradient(#fdfbf7 2rem, #f4f0e6 2rem);
+            background-size: 100% 2.1rem;
+            line-height: 2.1rem;
+            color: #334155;
+        }
+        .page-marker {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
 
+    <!-- Header -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-lg border-b-4 border-yellow-500">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-yellow-600 p-2 rounded-lg">
+                    <i data-lucide="book-open" class="w-8 h-8 text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold">الموسوعة الشاملة للحاسب الآلي</h1>
+                    <p class="text-slate-400 text-xs md:text-sm">ملخصات نظرية + شرح عملي لـ Office</p>
+                </div>
+            </div>
+            <nav class="flex flex-wrap justify-center gap-2 text-sm font-bold">
+                <a href="#summary-section" class="px-3 py-2 rounded-lg bg-yellow-600 hover:bg-yellow-700 transition text-white ring-2 ring-yellow-400">الملخص الشامل</a>
+                <a href="#word-insert" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-blue-600 transition text-blue-100">Insert (Word)</a>
+                <a href="#excel-home" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-green-600 transition text-green-100">Excel Home</a>
+                <a href="#word-layout" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-blue-600 transition text-blue-100">Page Layout (Word)</a>
+                <a href="#exams-section" class="px-3 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition text-white ring-2 ring-red-400">الامتحانات (PDF)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 space-y-16">
+
+        <!-- ========================================== -->
+        <!--  SUMMARY SECTION (قسم الملخص)              -->
+        <!-- ========================================== -->
+        <section id="summary-section" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-yellow-500 px-6 py-4 flex items-center justify-between text-white">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="notebook" class="w-6 h-6"></i>
+                    ملخص مهم جداً جداً للحاسب الآلي
+                </h2>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm">شامل المنهج</span>
+            </div>
+
+            <div class="p-8 bg-[#fffcf5]">
+                
+                <!-- Page 1 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 1</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">مقدمة وتاريخ الحاسب</h3>
+                    <p class="mb-4 leading-loose">
+                        يعتبر الحاسب الآلى او جهاز الكمبيوتر هو جهاز تقنى يستخدم لحل بعض العمليات التي يقوم بها العقل البشرى.<br>
+                        تم اختراع الحاسب الالى فى القرن ١٨ وتطور الحاسب الآلى بدءاً من الجيل الأول 1946 إلى الجيل الثاني 1955 إلى الجيل الثالث بدءاً من 1965 إلى ان وصل إلى الجيل الرابع 1975 والجيل الخامس في وقتنا الحالي.<br>
+                        تطور جهاز الحاسب الآلى مع تطوير الاجيال حتى وصل إلى مجد جهاز اللابتوب إلى حجر صغير جداً يمكن حمله فى اى مكان في عام 2022.
+                    </p>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">* انواع الحاسبات الآلية :-</h4>
+                    <ul class="list-disc list-inside space-y-2 leading-loose">
+                        <li><strong>(1) النوع الاول يسمى (PC):</strong> حجمه كبير نسبياً لا يسمح الا بوضعه على سطح المكتب، هو ثابت في مكان واحد، واسعاره فى متناول الجميع وهو اكثر استخداما.</li>
+                        <li><strong>(2) النوع الثاني يسمى الحاسب الالى المحمول (Laptop):</strong> يتميز بصغر حجمه واحتواءه على بطارية ويسمح بالانتقال به من مكان لآخر وهو اكثر عملية واكثر تطوراً من الحاسب المكتبي، دمج الاجزاء الكبيرة في اجزاء صغيرة خفيفة.</li>
+                        <li><strong>(3) النوع الثالث الحاسب الالى اللوحى:</strong> هو يشبه الموبيل والتابلت ويستخدم نظام تشغيل الويندوز أو نظام تشغيل الاندرويد يستخدمه الانسان في التصوير والسماع للموسيقى وكتابة المقالات فهو جهاز رخيص السعر وخفيف الوزن.</li>
+                        <li><strong>(٤) النوع الرابع السيرفرز أو الخادم:</strong> ذاكرته كبيرة وسرعته عاليه يمكن استخدامه فى تشغيل عدد كبير من الحاسبات الشخصية والتنسيق فيما بينها، مثلاً السيرفر الخاص بشركة جوجل وسيرفر الخاص بالميكروسوفت يستخدمونهم لمعالجة البيانات والوصول إلى معلومة التي يرغبون فيها، وفى حالة توقف السيرفر سوف يؤدى إلى توقف موقع الشركة وحدوث خسائر كبيرة هائلة.</li>
+                    </ul>
+                </div>
+
+                <!-- Page 2 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 2</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">طريقة معالجة الكمبيوتر للمعلومات</h3>
+                    <ul class="list-decimal list-inside space-y-2 mb-4 leading-loose">
+                        <li><strong>المهمة الأولى:</strong> قبول واستقبال المعلومات والبيانات.</li>
+                        <li><strong>المهمة الثانية:</strong> معالجة المعلومات والبيانات من خلال مجموعة كبيرة من البرامج.</li>
+                        <li><strong>المهمة الثالثة:</strong> عرض النتائج وتخزين المعلومات داخل الذاكرة.</li>
+                    </ul>
+                    <div class="bg-yellow-50 p-4 rounded-lg mb-4 text-center border border-yellow-200">
+                        <strong>دورة العمل:</strong> استقبال البيانات (1) ← عملية المعالجة (2) ← الاخراج (3) / التخزين.
+                    </div>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">أهم المصطلحات للتعامل مع الحاسب الآلي:</h4>
+                    <ul class="list-disc list-inside space-y-2 leading-loose">
+                        <li><strong>(1) البيانات data:</strong> هي المعلومات أو البيانات التي يتم ادخالها للحاسب الآلى لبدء المعالجة.</li>
+                        <li><strong>(2) المعالجة Processing:</strong> هي عملية معالجة وتحويل البيانات من شكل إلى آخر.</li>
+                        <li><strong>(3) اخراج البيانات data output:</strong> هي عملية اظهار البيانات ورقى أو على شاشة.</li>
+                        <li><strong>(٤) التخزين Storage:</strong> هي عملية الاحتفاظ بالبيانات والمعلومات في الذاكرة الخاصة بالكمبيوتر لاسترجاعها عند الحاجة مثل قرص ليزر CD-ROM.</li>
+                    </ul>
+                    <h4 class="font-bold text-lg text-yellow-700 mt-4 mb-2">مكونات الحاسب الألى:</h4>
+                    <p class="leading-loose">
+                        <strong>أجزاء الحاسب الآلى الصلبة:</strong> يتكون من جزئين رئيسيين.<br>
+                        - الجزء الاول: هو الجزء الصلب أو Hardware وهو عبارة عن اجزاء الحاسب الالى الملموسة الصلبة مثل لوحة المفاتيح والماوس والسماعات والطابعة، والكيس (Case) بداخله المذر بورد والرامات والهارد وكارته الفيجا.
+                    </p>
+                </div>
+
+                <!-- Page 3 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 3</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">وحدات الحاسب</h3>
+                    <ul class="space-y-4 leading-loose">
+                        <li><strong>* اولاً : وحدات الادخال:</strong> هى الوحدات التي تقوم باستقبال البيانات ويوجد وحدات ادخال مختلفة مثل لوحة المفاتيح والماوس والماسح الضوئى وبعض الاجهزة التي يتم توصيلها والحساسات.</li>
+                        <li><strong>ثانياً : وحدات المعالجة المركزية:</strong> تقوم بإجراء العمليات الحسابية الخاصة بالمعلومات والبيانات وتقوم هذه الوحده بالاف العمليات الحسابية في الثانية الواحدة وتسمى Processor أو المعالج مثل جهاز الحاسب Computer، كلما زادت قوة المعالج زادت سرعته كلما زادت كفاءه جودته.</li>
+                        <li><strong>ثالثا : وحدات الاخراج:</strong> هي عملية اظهار المعلومات والنتائج مثل السماعات والطابعة والشاشة.</li>
+                        <li><strong>رابعاً : وحدات التخزين الثانوية:</strong> من أهم الوحدات التي تقوم بتخزين البيانات والمعلومات بصورة دائمة فى القرص الصلب أو الهارد ديسك والسي دي روم والفلاش، كلما زاد الهارد ديسك كلما زاد وامكن تخزين بيانات أو معلومات.</li>
+                        <li><strong>* وحدة النظام (CPU):</strong> هو الصندوق المعدنى الذى يحتوى جميع مكونات الكمبيوتر.</li>
+                        <li><strong>* اللوحة الأم (Motherboard):</strong> هي اهم الاجزاء التي يتم تركيبها فى وحدة النظام، سميت بهذا الاسم لانها الجزء الرئيس التى يتم توصيل فيها جميع القطع الأخرى في الحاسب الالى تسمح بالتنسيق ونقل وتوصيل المعلومات لمختلف الاجزاء.</li>
+                        <li>* المعالج هو العقل الرئيس الذى يقوم بإداره الكمبيوتر والتحكم فى سرعته.</li>
+                        <li>* يسمى الرام بالذاكرة العشوائية.</li>
+                        <li>* عند عمل ريستارت او غلق الجهاز يتم مسح جميع المعلومات الموجودة داخل الجهاز (الرام).</li>
+                        <li>* يتم تشغيل لوحة الام بتوصيلها بجهاز الباور سبلاى والذى يقوم بتحويل الفولت من 220 فولت الى 12 فولت ليتلاءم مع لوحة الام لتشغيلها.</li>
+                        <li>* المعالج هو الجزء الذي يقوم بجميع العمليات ومعالجتها ثم ارسال النتائج إلى الاجزاء الخاصة الاخرى بالاخراج والتخزين.</li>
+                    </ul>
+                </div>
+
+                <!-- Page 4 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 4</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">تفاصيل المعالج والبرمجيات</h3>
+                    <p class="leading-loose mb-2"><strong>يتكون المعالج من:</strong></p>
+                    <ul class="list-disc list-inside mb-4 leading-loose">
+                        <li><strong>وحدة الحساب والمنطق:</strong> يتم فيها معالجة جميع العمليات الحسابية والمنطقية.</li>
+                        <li><strong>وحدة التحكم:</strong> تعتبر بمثابة العقل المنظم للحاسب الالى يمكن من خلالها اصدار اوامر في جميع انحاء الحاسب.</li>
+                    </ul>
+                    <p class="leading-loose mb-4">
+                        <strong>القرص الصلب (Hard Disk):</strong> هو من اهم الاجزاء، يتكون القرص الصلب من اقراص معدنية مطلية بمادة ممغنطة موضوعة داخل علبة محكمة الاغلاق ومفرغة من الهواء، يمكن تخزين المعلومات فيها وتصل سعات التخزينية إلى 2 تيرا بايت أو 200 جيجا بايت.
+                    </p>
+                    <p class="leading-loose mb-4">
+                        <strong>* البرامج:</strong> هي عبارة عن اكواد يتم كتابتها وتخزينها داخل جهاز الكمبيوتر حتى استطيع تشغيلها والاستفادة منها فيوجد العديد من البرمجيات مثل انظمة التشغيل الويندوز وانظمة التشغيل الاندرويد.<br>
+                        من أهم البرامج: برنامج وورد الذى تستطيع من خلاله الكتابة باستخدام الكمبيوتر.<br>
+                        <strong>البرنامج:</strong> هو مجموعة مرتبة من التعليمات مكتوبة بأحد لغات البرمجة لتحقيق مهمة أو عمل محدد، يمكن تنفيذها وتخزينها على الحاسب.
+                    </p>
+                    <ul class="space-y-2 leading-loose">
+                        <li><strong>* مستخدم الحاسب (End users):</strong> يطلق عليه احياناً المستخدم النهائي، هم الاشخاص الذين يعملون على الحاسب فى البيئة الحاسوبية يحتاجون إلى الخرج الذي تنتجه النظم الحاسوبية ويتفاعلون مع المعلومات التي يحتويها الخرج.</li>
+                        <li><strong>* المبرمج (Programmer):</strong> هو الشخص الذي يقوم بكتابة برامج للحاسب يمكن تطبيقها عملياً.</li>
+                        <li><strong>* شبكة الحاسب (Network):</strong> هي مجموعة من الحواسيب المرتبطة مع بعضها البعض من أجل مشاركة الموارد والبرمجيات والبيانات.</li>
+                    </ul>
+                </div>
+
+                <!-- Page 5 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 5</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">الانترنت و Office 365</h3>
+                    <ul class="space-y-3 leading-loose mb-6">
+                        <li><strong>الانترنت (Internet):</strong> هى اكبر شبكة للحاسبات في العالم يمكن ان توصل الحاسب مع الملايين من الناس والمنظمات والمؤسسات والمواقع الاخرى الموجودة في انحاء العالم.</li>
+                        <li><strong>الويب (web):</strong> هى واجهة متعددة الوسائط إلى العديد من الموارد المتاحة على شبكة الانترنت.</li>
+                        <li><strong>الخوارزمية (Algorithm):</strong> هى مجموعة من الخطوات الرياضية والمنطقية المتسلسلة تصمم لحل مشكلة ما وسميت بهذا الاسم نسبة إلى العالم الذي ابتكرها في القرن 19 ميلادي (الخوارزمي).</li>
+                        <li><strong>خطوات الحل:</strong> (Start) -> Input -> Process -> Output -> (End).</li>
+                    </ul>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">طريقة فتح المايكروسوفت (Microsoft office 365):</h4>
+                    <ol class="list-decimal list-inside space-y-2 leading-loose">
+                        <li>يحصل الطالب على اليوزرنيم والرقم السرى الخاص بالإيميل الجامعي من مكتب شئون الطلاب أو من مكتب وحده القياس والتقويم الخاص بالكلية.</li>
+                        <li>يقوم الطالب بكتابه كلمة (Microsoft 365) في جوجل كروم وعمل بحث.</li>
+                        <li>سيظهر له مجموعة من المواقع وسوف تجد موقع اوفيس 365 Login.</li>
+                        <li>الدخول إلى حساب موقع اوفيس 365 سوف يظهر لك مكان الخاص بالايميل والرقم السرى والباسورد.</li>
+                    </ol>
+                </div>
+
+                <!-- Page 6 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 6</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">تطبيقات Office 365</h3>
+                    <ol start="5" class="list-decimal list-inside space-y-2 leading-loose mb-6">
+                        <li>سوف تقوم بتسجيل الدخول وبعد ذلك سوف يقوم بارسال رسالة لك على رقم موبايلك الذي سبق تسجيله في الموقع.</li>
+                        <li>سوف يتم ارسال كود بعد ذلك يتم كتابته في الخانة الخاصة بالكود.</li>
+                        <li>سوف تقوم بتغير الباسورد الخاص بالطالب لاختيار باسورد أمن.</li>
+                        <li>بعد ذلك ستتعرف على الموقع وتجد فيه كثير من البرامج والعديد من الامكانيات وكثير من التطبيقات.</li>
+                    </ol>
+                    <p class="leading-loose mb-4">
+                        <strong>- مايكروسوفت اوت لوك (Outlook):</strong> هو يختص بالايميل الخاص بالطالب ويمكن من خلاله ارسال أو استقبال الرسائل النصية او الملفات الخاصة بالدراسة.<br>
+                        <strong>- OneDrive:</strong> يمكن تخزين عدد معين من الملفات في حدود سعة تخزين تصل إلى 2 جيجا ويستطيع الطالب تخزين اي ملف داخل الايميل.
+                    </p>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">شرح اهم التطبيقات فى موقع Microsoft office 365:</h4>
+                    <p class="mb-2"><strong>1- مايكروسوفت اوت لوك (outlook):</strong></p>
+                    <p class="leading-loose mb-2">
+                        - عند الضغط على Outlook سيظهر الايميل الخاص بالطالب في نافذة جديدة تظهر مجموعه من الاسهم:<br>
+                        - (اول) ايقونه تسمى <strong>Inbox</strong> أو الصندوق الوارد وعند الضغط عليها تستطيع تصفح الايميلات الجديدة ويمكن ترتيب هذه الايميلات أو الرسائل البريدية من الأقدم للأحدث أو العكس حسب الرغبة، وعند الضغط على الايميل او رساله ستظهر بما فيها من معلومات أو بيانات.<br>
+                        - ثانى ايقونة تسمى الدرافت <strong>(Draft)</strong> عند الضغط عليها ستظهر الايميلات أو الرسائل البريدية التى تم حفظها ويمكن استخدامها اكثر من مرة.<br>
+                        - ثالث ايقونة <strong>(Sent Items)</strong> الرسائل البريدية التي تم ارسالها إلى ايميل أخر وعند الضغط عليها نشاهد جميع الايميلات التي قام الشخص بارسالها الى غيره.<br>
+                        - رابع ايقونة <strong>(Deleted Items)</strong> الايميلات أو الرسائل التي تم مسحها وعند فتحها نشاهد الايميلات ورسائل البريد الالكتروني التي قام المستخدم بمسحها وذلك قبل التخلص منها نهائياً.
+                    </p>
+                </div>
+
+                <!-- Page 7 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 7</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">تكملة Outlook و Microsoft Teams</h3>
+                    <ul class="space-y-3 leading-loose mb-6">
+                        <li>- خامس ايقونة <strong>(Junk Emails)</strong>: الرسائل البريدية التي موجودة في صندوق المخلفات وفى كثير من الاحيان يقوم الايميل بتحويلها إلى صندوق المخلفات نظراً لاحتوائها على فيروس فبالتالى يجب مسحها والتخلص منها.</li>
+                    </ul>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">مايكروسوفت تيمز (Teams):</h4>
+                    <p class="leading-loose mb-4">
+                        من اهم التطبيقات الموجودة في موقع (Microsoft office 365) نظراً لاهميته الشديدة في انشاء الحصص والفصول التفاعلية ويمكن من خلاله عمل جروب للمواد فى الكلية ويقوم استاذ المادة بإرسال المادة العلمية من خلال الجروب.
+                    </p>
+                    <p class="font-bold mb-2">طريقة الدخول على مايكروسوفت تيمز:</p>
+                    <ol class="list-decimal list-inside space-y-2 leading-loose mb-4">
+                        <li>كتابة Microsoft teams في متصفح جوجل.</li>
+                        <li>سيظهر الموقع الخاص بـ Teams ثم تقوم بالدخول إلى الموقع.</li>
+                        <li>ادخال اسم المستخدم والرقم السرى الخاص بك الذي سبق عمله.</li>
+                    </ol>
+                    <p class="leading-loose mb-4">
+                        * نجد فى Teams العديد من الاجزاء فمثلاً:<br>
+                        - على الجانب الايسر يوجد جميع الجروبات والتميز الذي قام الطالب بالاشتراك فيها ويوجد مجموعة من الايقونات منها الشات أو المحادثة أو يمكن عمل مقابلة مصورة بالضغط على Meet.<br>
+                        <strong>- طريقة الوصول إلى الكود الخاص بكل جروب:</strong><br>
+                        1- يتم الضغط على الثلاث نقط بجانب اسم الجروب أو التيمز.<br>
+                        2- ستظهر قائمة جديدة يوجد بها Members الاعضاء الخاصة بالتيميز وقائمة settings وهذه القائمة سوف تستطيع الحصول على الكود الخاص بالتيميز.
+                    </p>
+                    <p class="bg-yellow-100 p-2 rounded">
+                        <strong>* تعريف المستند النصي المنسق:</strong> هو مستند يحتوى على نص قد يكون بخط غامق أو مائل أو مسطر أو لون مختلف أو خط مختلف.
+                    </p>
+                </div>
+
+                <!-- Page 8 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 8</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">مقدمة فى برنامج (Microsoft Word 2010)</h3>
+                    <p class="leading-loose mb-4">
+                        هو احد اهم البرامج لمعالجة النصوص وافضل من برنامج (Wordpad) وهو اكثر البرامج معالجة الكلمات نظراً لسهولة استخدامه ولاحتوائه على معظم اللغات المستخدمة على مستوى العالم.
+                    </p>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">- فتح برنامج Microsoft Word 2010:</h4>
+                    <ol class="list-decimal list-inside space-y-2 leading-loose mb-4">
+                        <li>بالنقر فوق الرمز الموجود على سطح المكتب (Shortcut).</li>
+                        <li>سيتم فتح مستند فارغ، هذا مستند جديد يكون الاسم الافتراضي له (Document 1)، لكل مستند جديد تفتحه يزيد الاسم الافتراضي بمقدار 1 (Document 2, Document 3...).</li>
+                        <li>إذا بدأت Ms word بالنقر فوق مستند موجود بالفعل على جهاز الكمبيوتر سيتم فتحه تلقائياً ويعرض المستند الخاص بك فى نافذة (Ms Word).</li>
+                    </ol>
+                    <ul class="space-y-2 leading-loose mb-4">
+                        <li>* الرمز (-) تصغير الصفحة.</li>
+                        <li>* الرمز (مربع) يقوم بتكبير الصفحة.</li>
+                        <li>* الرمز (x) يقوم بغلق الصفحة.</li>
+                    </ul>
+                    <p class="leading-loose">
+                        <strong>تصفح برنامج Word 2010:</strong><br>
+                        يوجد مكون آخر لبرنامج Ms word هو اشرطة الادوات:<br>
+                        - اشرطة الادوات توجد أعلى الصفحة تماماً اسفل شريط العنوان مباشرة.<br>
+                        - ستستخدم اشرطة الادوات لانجاز وظائف محددة داخل Ms word سيجعل عملك سريعاً وسهلا.<br>
+                        - اسفل اشرطة الادوات لديك منطقة المستند تشغل معظم النافذة وهو المكان الذي ستكتب فيه النص أو تعدله.<br>
+                        لإنشاء مستند جديد قم بتحرير مستند موجود أو احفظه أو انشره أو اطبعه أو اغلقه انقر فوق علامة التبويب <strong>ملف</strong> ستظهر لك نافذة تظهر فوق نافذة المستند، عند النقر فوق الملف سترى المعلومات حول المستند الحالي الذي تعمل فيه على الجانب الايمن من هذه النافذة يمكنك عرض المستند و خصائصه.
+                    </p>
+                </div>
+
+                <!-- Page 9 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 9</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">الشريط (Ribbon) وإنشاء الملفات</h3>
+                    <p class="leading-loose mb-4">
+                        <strong>الشريط (Ribbon):</strong> هو ميزة تم اضافتها في (Word 2007) ولا تزال موجود في (Word 2010). يبدأ الشريط بعلامة تبويب التي تراها في اعلى الصفحة بقوائم الصفحة الرئيسة ويتم تقسيم علامات التبويب هذه إلى مجموعات ستراها اسفل علامة التبويب.<br>
+                        <strong>المجموعات:</strong> هي الحافظة والخط والفقرة والانماط والتحرير، والمجموعات هي نفسها اشرطة الادوات فى الاصدارات السابقة لكنها اكثر تنظيماً مما يسهل الحصول على ما نحتاجه واكمال المهمة.
+                    </p>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">طريقة فتح ملف جديد:</h4>
+                    <ul class="list-disc list-inside space-y-2 leading-loose mb-4">
+                        <li>(1) النقر فوق <strong>ملف</strong> ثم النقر فوق <strong>"جديد"</strong> فى الجانب الايمن من النافذة.</li>
+                        <li>- الاختيار من بين القوالب المتوفرة فى الاعلى لمساعدتك في تحديد موقعه فى هذه النافذة الكبيرة.</li>
+                        <li>- يمكنك اختيار مستند فارغ هو مستند جديد تماماً دون اي تنسيق سبق.</li>
+                        <li>- القوالب الحديثة: هى القوالب التى استخدمتها مؤخراً.</li>
+                        <li>- القوالب التي تعرض هى القوالب التي استخدمتها أو انشاتها.</li>
+                        <li>- ينشئ مستنداً جديداً أو قالباً من مستند موجود.</li>
+                        <li>- (office.Com) لديك انواع مختلفة من القوالب يمكنك اختيار واحد، اختيار فئة ثم اختيار قالب من تلك الفئة.</li>
+                        <li>- عندما تنتهى من اعداد المستند الجديد انقر فوق رمز انشاء على اليمين.</li>
+                    </ul>
+                    <p class="bg-red-50 text-red-700 p-3 rounded border border-red-200">
+                        <strong>** تحذير:</strong> لا تغلق (word) دون حفظ المستند الخاص بك يجب حفظه وإلا سيتم فقد عملك الى الابد.
+                    </p>
+                </div>
+
+                <!-- Page 10 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 10</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">تحويل وتعديل المستندات</h3>
+                    <p class="leading-loose mb-4">
+                        <strong>طريقة تحويل المستند (Converting a Document):</strong><br>
+                        تحويل المستند هو اكثر تعقيداً إذا فتحت مستند تم انشاؤه في اصدار مختلف من Microsoft word أو برنامج معالجة اخر قد تكون مشاكل.<br>
+                        في هذه المرحلة سيكون لديك خيار اما تحويل ملفك إلى تنسيق (Word 2010) أو الاحتفاظ به كما هو.<br>
+                        انقر فوق موافق (ok) وتحويل ملفك إلى تنسيق (word) بعد ذلك سيكون لديك حق الوصول إلى جمع مميزات (word 2010) عند العمل مع المستند، ثم يمكنك اختيار الاحتفاظ بهذا التنسيق الحالي أو اضغط فوق الغاء الامر Cancel للمحافظة على التنسيق.
+                    </p>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">تعديل النص:</h4>
+                    <p class="leading-loose mb-2">
+                        - اختيار النص وتحديده وتعديله يظهر النص مميزا highlighted.<br>
+                        <strong>تحديد النص يتم فى ٣ خطوات سريعة:</strong><br>
+                        1- حرك المؤشر إلى بداية النص الذي تريد تحديده.<br>
+                        2- انقر مع الاستمرار فوق الزر الايسر على الماوس.<br>
+                        3- اصحبه فوق النص الذى تريد تحديده سيكون باللون الازرق.<br>
+                        <strong>عند تحديد النص باكمله:</strong><br>
+                        (1) النقر فوق CTRL + A على لوحة المفاتيح أو النقر على علامة التبويب الصفحة...<br>
+                        (2) النقر فوق تحديد في اقصى اليمين.<br>
+                        (3) ستحدد بعد ذلك تحديد الكل "Select all".
+                    </p>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">* طريقة اجراء القص والنسخ Cut and Copy:</h4>
+                    <p class="leading-loose">
+                        - بمجرد تحديد النص يمكنك تحديد النص لتنسيقه او تغير نوع الخط أو حجمه أو قص النص أو حذفه أو لصقه في مكان آخر فى نفس المستند أو مستند آخر أو يمكن نسخهما ولصقهما في مكان آخر.<br>
+                        - حدد النص أو الكائن المراد قصه ونسخه انقر فوق الرمز (قص CUT).<br>
+                        - حدد نصاً أو كائناً ليتم قصه ونسخه واستخدم (CTRL + X للقص) و (CTRL + C للنسخ).
+                    </p>
+                </div>
+
+                <!-- Page 11 Content -->
+                <div class="mb-8 border-b-2 border-dashed border-yellow-200 pb-6">
+                    <span class="page-marker">Page 11</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">الحافظة والطباعة وبرنامج Excel</h3>
+                    <ul class="space-y-3 leading-loose mb-6">
+                        <li>- عندما تقوم بقص كائن يتم نسخه إلى الحافظة.</li>
+                        <li>- عندما تقوم بحذف كائن يتم ازالته ببساطة من المستند والطريقة الوحيدة لاستعادته هو الضغط فوق كلمة تراجع عن الكتابة (Undo).</li>
+                    </ul>
+                    <p class="font-bold mb-2">خطوات نسخ النص والكائنات إلى الحافظة:</p>
+                    <ul class="list-disc list-inside space-y-2 leading-loose mb-4">
+                        <li>حدد النص أو الكائن المراد نسخه انقر فوق رمز النسخ في مجموعة الحافظة.</li>
+                        <li>حدد النص أو الكائن المراد نسخه ضع المؤشر الماوس فوقه وانقر بزر الماوس الايمن ثم حدد نسخ من القائمة.</li>
+                        <li>حدد النص أو العنصر المراد نسخه واضغط على (CTRL + C).</li>
+                        <li>الحافظة: كلما قمت بنسخ اي شئ في Ms word يتم ارساله تلقائيا إلى الحافظة.</li>
+                        <li>تعمل الحافظة على النص الذى تنسخه وتلصقه لتستخدمه.</li>
+                    </ul>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">لطباعة ملف:</h4>
+                    <p class="leading-loose mb-4">
+                        1- اختيار امر للطباعة من خلال استخدام الامر (File -> Print) أو باستخدام اختصارات لوحة المفاتيح CTRL + P.<br>
+                        <strong>طباعة الملف:</strong><br>
+                        - السهم الاحمر يشير إلى عدد نسخ الطباعة.<br>
+                        - السهم الاخضر يشير إلى موديل الطابعة.<br>
+                        - السهم الازرق يشير إلى الصفحات المراد طباعتها.<br>
+                        - السهم البرتقالى يشير إلى طريقة الطباعة (وجه أو وجهان).<br>
+                        - السهم الزيتونى يشير الى طريقة نسخ الورق.<br>
+                        - السهم الروز يشير إلى اتجاه طباعه الصفحة (طولية أو عريضة).
+                    </p>
+                    <h4 class="font-bold text-lg text-yellow-700 mb-2">* برنامج مايكروسوفت اكسل (Microsoft Excel):</h4>
+                    <p class="leading-loose">
+                        هو من أهم البرامج لمجموعة اوفيس وهو برنامج متخصص يستخدم في عمل الحسابات والرسم المخططات البيانية ويسمى برنامج الجداول الالكترونية أو الجداول الحسابية وانشاء جداول معقده اى يصعب انشاؤها في معالجات النصوص.<br>
+                        كبرنامج وردي هو يقدم الكثير من المزايا والمهام وعمل المعادلات الرياضية والرسومات البيانية بصورة احترافية.
+                    </p>
+                </div>
+
+                <!-- Page 12 Content -->
+                <div class="mb-2">
+                    <span class="page-marker">Page 12</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">تصفح برنامج (Microsoft Excel)</h3>
+                    <p class="leading-loose mb-4">
+                        انقر على زر البدأ بعد تشغيل البرنامج تظهر شاشة افتتاحية للبرنامج:
+                    </p>
+                    <ol class="list-decimal list-inside space-y-2 leading-loose mb-4">
+                        <li><strong>شريط العنوان:</strong> اسم البرنامج مايكروسوفت اكسل باسم الملف Book1 ويكون امتداد ملف الاكسل xlsx.</li>
+                        <li><strong>شريط القوائم:</strong> تعرض القائمة لائحة الأوامر وهناك بعض الاختصارات للأوامر من لوحة المفاتيح او من شريط الادوات.</li>
+                        <li><strong>شريط الادوات:</strong> عبارة عن خليط بين ازرار وقوائم لتسهيل التعامل مع البرنامج، يمكن تغير وجه شريط الادوات لعرض ازرار اضافية كما يمكنك إظهار كافة الازرار.</li>
+                        <li><strong>شريط الصيغة:</strong> هو الشريط التي تظهر فيها المعادلات والدوال.</li>
+                        <li><strong>ورقة العمل (Worksheet):</strong> كل ملف بالإكسل يشتمل على ٣ ورقات افتراضية يمكن زيادة عدد الورقات.</li>
+                        <li><strong>الخلية (Cell):</strong> تقاطع اى عمود مع اى صف في ورقة العمل.</li>
+                        <li><strong>الخلية النشطة (Active Cell):</strong> هى الخلية التي يحيط بها برواز ويظهر عنوانها في شريط الصيغة.</li>
+                    </ol>
+                    <p class="leading-loose">
+                        * عند فتح Home سيظهر لنا الصفحة الموجودة الخاصة بالاكسل Sheet وعدد كبير من الخلايا Cells الظاهرة وهذه الخلايا مرتبه فى مجموعة من الاعمدة.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!--  END OF SUMMARY SECTION                    -->
+        <!-- ========================================== -->
+
+        <!-- 1. Word Insert Section -->
+        <section id="word-insert" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-blue-600 px-6 py-4 flex items-center justify-between text-white">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="file-plus" class="w-6 h-6"></i>
+                    1. تبويب "إدراج" (Insert) - Word
+                </h2>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm">19 أداة</span>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-lg text-slate-600 mb-6 bg-blue-50 p-4 rounded-xl border-r-4 border-blue-500">
+                    هذه القائمة خاصة بإضافة عناصر مختلفة إلى المستند.
+                </p>
+
+                <div class="flex flex-col gap-8">
+                    <!-- Image Place -->
+                    <div class="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center w-full max-w-4xl mx-auto overflow-hidden relative group">
+                        <img src="./word_insert.jpg" alt="Insert Tab Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105"
+                             onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>word_insert.jpg</p></div>'">
+                    </div>
+
+                    <!-- List -->
+                    <div class="overflow-y-visible">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">1</span>
+                                <div><strong class="text-blue-900 block mb-1">Cover Page (صفحة غلاف):</strong> لإدراج غلاف جاهز ومنسق للمستند في البداية.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">2</span>
+                                <div><strong class="text-blue-900 block mb-1">Blank Page (صفحة فارغة):</strong> لإدراج صفحة بيضاء جديدة فوراً.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">3</span>
+                                <div><strong class="text-blue-900 block mb-1">Page Break (فاصل صفحات):</strong> لإنهاء الصفحة الحالية والبدء في صفحة جديدة فوراً.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">4</span>
+                                <div><strong class="text-blue-900 block mb-1">Table (جدول):</strong> لإنشاء وإدراج جداول لتنظيم البيانات.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">5</span>
+                                <div><strong class="text-blue-900 block mb-1">Picture (صورة):</strong> لإدراج صورة محفوظة على جهاز الكمبيوتر الخاص بك.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">6</span>
+                                <div><strong class="text-blue-900 block mb-1">Clip Art (قصاصة فنية):</strong> لإدراج رسومات توضيحية بسيطة (موجودة في النسخ القديمة من أوفيس).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">7</span>
+                                <div><strong class="text-blue-900 block mb-1">Shapes (أشكال):</strong> لرسم أشكال هندسية (مربعات، دوائر، أسهم، خطوط).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">8</span>
+                                <div><strong class="text-blue-900 block mb-1">SmartArt:</strong> لإدراج رسومات بيانية وهيكلية لتوضيح المعلومات بصرياً.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">9</span>
+                                <div><strong class="text-blue-900 block mb-1">Chart (مخطط):</strong> لإنشاء رسوم بيانية (أعمدة، دوائر نسبية) لتمثيل البيانات رقمياً.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">10</span>
+                                <div><strong class="text-blue-900 block mb-1">Screenshot (لقطة شاشة):</strong> لأخذ صورة لأي نافذة مفتوحة حالياً على الجهاز وإدراجها.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">11</span>
+                                <div><strong class="text-blue-900 block mb-1">Hyperlink (ارتباط تشعبي):</strong> لربط نص أو صورة برابط موقع إلكتروني أو بملف آخر.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">12</span>
+                                <div><strong class="text-blue-900 block mb-1">Header (رأس الصفحة):</strong> للكتابة في الهامش العلوي للصفحة (يتكرر في كل الصفحات).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">13</span>
+                                <div><strong class="text-blue-900 block mb-1">Footer (تذييل الصفحة):</strong> للكتابة في الهامش السفلي للصفحة.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">14</span>
+                                <div><strong class="text-blue-900 block mb-1">Page Number (رقم الصفحة):</strong> لإدراج ترقيم تلقائي لصفحات المستند.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">15</span>
+                                <div><strong class="text-blue-900 block mb-1">Text Box (مربع نص):</strong> لإدراج صندوق يمكن الكتابة بداخله وتحريكه بحرية في الصفحة.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">16</span>
+                                <div><strong class="text-blue-900 block mb-1">WordArt:</strong> للكتابة بخطوط زخرفية وتأثيرات فنية وتلوين مميز.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">17</span>
+                                <div><strong class="text-blue-900 block mb-1">Date & Time (التاريخ والوقت):</strong> لإدراج التاريخ والوقت الحاليين بنقرة واحدة.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">18</span>
+                                <div><strong class="text-blue-900 block mb-1">Equation (معادلة):</strong> لإدراج رموز ومعادلات رياضية معقدة.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100 h-full">
+                                <span class="number-badge bg-blue-500">19</span>
+                                <div><strong class="text-blue-900 block mb-1">Symbol (رمز):</strong> لإدراج رموز خاصة غير موجودة في لوحة المفاتيح (مثل ©، ™، £).</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Excel Home Section -->
+        <section id="excel-home" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-green-600 px-6 py-4 flex items-center justify-between text-white">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="sheet" class="w-6 h-6"></i>
+                    2. واجهة Excel (الشريط الرئيسي)
+                </h2>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm">4 أدوات رئيسية</span>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-lg text-slate-600 mb-6 bg-green-50 p-4 rounded-xl border-r-4 border-green-500">
+                    توضح هذه الواجهة بعض الأدوات الأساسية في التعامل مع الخلايا.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Image Place -->
+                    <div class="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center min-h-[300px] relative group overflow-hidden">
+                         <img src="./excel_home.jpg" alt="Excel Home Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105"
+                             onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>excel_home.jpg</p></div>'">
+                    </div>
+
+                    <!-- List -->
+                    <div class="flex flex-col justify-center">
+                        <ul class="space-y-4">
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
+                                <span class="number-badge bg-green-600">1</span>
+                                <div><strong class="text-green-800">Name Box (مربع الاسم):</strong> يظهر فيه اسم الخلية النشطة التي تقف عليها حالياً (مثلاً A1).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
+                                <span class="number-badge bg-green-600">2</span>
+                                <div><strong class="text-green-800">Formula Bar (شريط الصيغة):</strong> يظهر فيه محتوى الخلية الحقيقي، سواء كان نصاً أو معادلة رياضية.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
+                                <span class="number-badge bg-green-600">3</span>
+                                <div><strong class="text-green-800">Delete (حذف):</strong> خيار لحذف الخلايا، الصفوف، أو الأعمدة المحددة.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-4 rounded-lg border border-slate-100 shadow-sm bg-white">
+                                <span class="number-badge bg-green-600">4</span>
+                                <div class="w-full">
+                                    <strong class="text-green-800">AutoSum Functions (دوال الجمع التلقائي):</strong> قائمة منسدلة تحتوي على دوال حسابية سريعة مثل:
+                                    <ul class="list-disc list-inside mt-2 text-sm text-green-700">
+                                        <li>Sum (المجموع).</li>
+                                        <li>Average (المتوسط).</li>
+                                        <li>Max/Min (أكبر/أصغر قيمة).</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Word Layout Section -->
+        <section id="word-layout" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-indigo-600 px-6 py-4 flex items-center justify-between text-white">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="layout-template" class="w-6 h-6"></i>
+                    3. تبويب "تخطيط الصفحة" (Page Layout)
+                </h2>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm">8 أدوات</span>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-lg text-slate-600 mb-6 bg-indigo-50 p-4 rounded-xl border-r-4 border-indigo-500">
+                    هذه القائمة خاصة بضبط شكل وتنسيق صفحات المستند.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Image Place -->
+                    <div class="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center min-h-[400px] relative group overflow-hidden">
+                        <img src="./word_layout.jpg" alt="Page Layout Image" class="w-full h-auto object-contain transition-transform group-hover:scale-105"
+                             onerror="this.parentElement.innerHTML='<div class=\'text-center p-8 text-slate-400\'><i data-lucide=\'image\' class=\'w-16 h-16 mx-auto mb-2 opacity-50\'></i><p>ضع الصورة هنا باسم<br>word_layout.jpg</p></div>'">
+                    </div>
+
+                    <!-- List -->
+                    <div class="flex flex-col justify-center">
+                        <ul class="space-y-3">
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">1</span>
+                                <div><strong class="text-indigo-900">Themes (النسق):</strong> تغيير تصميم المستند بالكامل (الألوان، الخطوط، التأثيرات) بضغطة واحدة ليكون متناسقاً.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">2</span>
+                                <div><strong class="text-indigo-900">Margins (الهوامش):</strong> التحكم في المساحة البيضاء الفارغة حول النص من الجهات الأربع (يمين، يسار، أعلى، أسفل).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">3</span>
+                                <div><strong class="text-indigo-900">Orientation (الاتجاه):</strong> تغيير وضع الصفحة إما "عمودي" (Portrait) أو "أفقي" (Landscape).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">4</span>
+                                <div><strong class="text-indigo-900">Size (الحجم):</strong> اختيار حجم الورقة المستخدمة (مثل A4, Letter).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">5</span>
+                                <div><strong class="text-indigo-900">Line Numbers (أرقام الأسطر):</strong> وضع رقم بجوار كل سطر في المستند (مفيد للمستندات القانونية أو البرمجية).</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">6</span>
+                                <div><strong class="text-indigo-900">Watermark (علامة مائية):</strong> وضع نص أو صورة باهتة في الخلفية (مثل كلمة "مسودة" أو "سري").</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">7</span>
+                                <div><strong class="text-indigo-900">Page Color (لون الصفحة):</strong> تغيير لون خلفية الورقة بالكامل.</div>
+                            </li>
+                            <li class="item-row flex gap-3 p-3 rounded-lg border border-slate-100">
+                                <span class="number-badge bg-indigo-500">8</span>
+                                <div><strong class="text-indigo-900">Spacing (التباعد):</strong> التحكم في المسافة الفارغة قبل الفقرة (Before) أو بعد الفقرة (After).</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Exams Section -->
+        <section id="exams-section" class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-red-600 px-6 py-4 flex items-center justify-between text-white">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-6 h-6"></i>
+                    4. الامتحانات (ملف PDF)
+                </h2>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm">عرض مباشر</span>
+            </div>
+            
+            <div class="p-6">
+                <p class="text-lg text-slate-600 mb-6 bg-red-50 p-4 rounded-xl border-r-4 border-red-500">
+                    يمكنك هنا تصفح ملف الامتحانات المرفق. تأكد من وجود الملف باسم <strong>exam.pdf</strong> في نفس المجلد.
+                </p>
+
+                <div class="w-full h-[800px] bg-slate-100 rounded-xl border-2 border-slate-300 overflow-hidden relative">
+                    <!-- PDF Viewer Object -->
+                    <object data="./exam.pdf" type="application/pdf" width="100%" height="100%">
+                        <div class="flex flex-col items-center justify-center h-full text-slate-500 p-8 text-center">
+                            <i data-lucide="file-x" class="w-16 h-16 mb-4 text-red-400"></i>
+                            <p class="text-xl font-bold mb-2">لم يتم العثور على ملف PDF</p>
+                            <p class="text-sm mb-4">يرجى وضع ملف باسم <code class="bg-slate-200 px-2 py-1 rounded text-red-600 font-mono">exam.pdf</code> بجانب ملف الموقع.</p>
+                            <a href="./exam.pdf" download class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition flex items-center gap-2">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                تحميل الملف
+                            </a>
+                        </div>
+                    </object>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t-4 border-slate-700">
+        <p>© 2023 دليل Office المبسط. تم إعداد المحتوى بواسطة عبد الرحمن.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
